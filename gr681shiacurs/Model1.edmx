@@ -1,0 +1,608 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище AirportSHIAModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="idClient" />
+          </Key>
+          <Property Name="idClient" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="75" Nullable="false" />
+          <Property Name="idDocument" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="customs">
+          <Key>
+            <PropertyRef Name="idcustoms" />
+          </Key>
+          <Property Name="idcustoms" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Baggage" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Weight" Type="int" Nullable="false" />
+          <Property Name="Cost" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Document">
+          <Key>
+            <PropertyRef Name="idDocument" />
+          </Key>
+          <Property Name="idDocument" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeDocument" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NumberDocument" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DateOfIssue" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Flight">
+          <Key>
+            <PropertyRef Name="idFlight" />
+          </Key>
+          <Property Name="idFlight" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateFlight" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PointOfDeparture" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LandingPoint" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TimeFlight" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NumberFlight" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NumberPlane" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FlightTicket">
+          <Key>
+            <PropertyRef Name="idFlightTicket" />
+          </Key>
+          <Property Name="idFlightTicket" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idFlight" Type="int" Nullable="false" />
+          <Property Name="ifTicket" Type="int" Nullable="false" />
+          <Property Name="Allseats" Type="int" Nullable="false" />
+          <Property Name="ordered" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrderTIcket">
+          <Key>
+            <PropertyRef Name="idOrderTicket" />
+          </Key>
+          <Property Name="idOrderTicket" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idFlightTicket" Type="int" Nullable="false" />
+          <Property Name="idUserSystem" Type="int" Nullable="false" />
+          <Property Name="idClient" Type="int" Nullable="false" />
+          <Property Name="Dateorder" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NumberOrder" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="StatusOrder" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="idcustomers" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Ticket">
+          <Key>
+            <PropertyRef Name="idTicket" />
+          </Key>
+          <Property Name="idTicket" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NumberTicket" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PriceTicket" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ClassTicket" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usersystem">
+          <Key>
+            <PropertyRef Name="idUser" />
+          </Key>
+          <Property Name="idUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Firstname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Adress" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Role" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserLogin" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserPassword" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Client_Document">
+          <End Role="Document" Type="Self.Document" Multiplicity="1" />
+          <End Role="Client" Type="Self.Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Document">
+              <PropertyRef Name="idDocument" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="idDocument" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FlightTicket_Flight">
+          <End Role="Flight" Type="Self.Flight" Multiplicity="1" />
+          <End Role="FlightTicket" Type="Self.FlightTicket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Flight">
+              <PropertyRef Name="idFlight" />
+            </Principal>
+            <Dependent Role="FlightTicket">
+              <PropertyRef Name="idFlight" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FlightTicket_Ticket">
+          <End Role="Ticket" Type="Self.Ticket" Multiplicity="1" />
+          <End Role="FlightTicket" Type="Self.FlightTicket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ticket">
+              <PropertyRef Name="idTicket" />
+            </Principal>
+            <Dependent Role="FlightTicket">
+              <PropertyRef Name="ifTicket" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderTIcket_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="OrderTIcket" Type="Self.OrderTIcket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="idClient" />
+            </Principal>
+            <Dependent Role="OrderTIcket">
+              <PropertyRef Name="idClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderTIcket_customs">
+          <End Role="customs" Type="Self.customs" Multiplicity="1" />
+          <End Role="OrderTIcket" Type="Self.OrderTIcket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customs">
+              <PropertyRef Name="idcustoms" />
+            </Principal>
+            <Dependent Role="OrderTIcket">
+              <PropertyRef Name="idcustomers" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderTIcket_FlightTicket">
+          <End Role="FlightTicket" Type="Self.FlightTicket" Multiplicity="1" />
+          <End Role="OrderTIcket" Type="Self.OrderTIcket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FlightTicket">
+              <PropertyRef Name="idFlightTicket" />
+            </Principal>
+            <Dependent Role="OrderTIcket">
+              <PropertyRef Name="idFlightTicket" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderTIcket_Usersystem">
+          <End Role="Usersystem" Type="Self.Usersystem" Multiplicity="1" />
+          <End Role="OrderTIcket" Type="Self.OrderTIcket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usersystem">
+              <PropertyRef Name="idUser" />
+            </Principal>
+            <Dependent Role="OrderTIcket">
+              <PropertyRef Name="idUserSystem" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище AirportSHIAModelContainer">
+          <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="customs" EntityType="Self.customs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Document" EntityType="Self.Document" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Flight" EntityType="Self.Flight" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FlightTicket" EntityType="Self.FlightTicket" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderTIcket" EntityType="Self.OrderTIcket" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ticket" EntityType="Self.Ticket" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usersystem" EntityType="Self.Usersystem" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Client_Document" Association="Self.FK_Client_Document">
+            <End Role="Document" EntitySet="Document" />
+            <End Role="Client" EntitySet="Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FlightTicket_Flight" Association="Self.FK_FlightTicket_Flight">
+            <End Role="Flight" EntitySet="Flight" />
+            <End Role="FlightTicket" EntitySet="FlightTicket" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FlightTicket_Ticket" Association="Self.FK_FlightTicket_Ticket">
+            <End Role="Ticket" EntitySet="Ticket" />
+            <End Role="FlightTicket" EntitySet="FlightTicket" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderTIcket_Client" Association="Self.FK_OrderTIcket_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="OrderTIcket" EntitySet="OrderTIcket" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderTIcket_customs" Association="Self.FK_OrderTIcket_customs">
+            <End Role="customs" EntitySet="customs" />
+            <End Role="OrderTIcket" EntitySet="OrderTIcket" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderTIcket_FlightTicket" Association="Self.FK_OrderTIcket_FlightTicket">
+            <End Role="FlightTicket" EntitySet="FlightTicket" />
+            <End Role="OrderTIcket" EntitySet="OrderTIcket" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderTIcket_Usersystem" Association="Self.FK_OrderTIcket_Usersystem">
+            <End Role="Usersystem" EntitySet="Usersystem" />
+            <End Role="OrderTIcket" EntitySet="OrderTIcket" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AirportSHIAModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="idClient" />
+          </Key>
+          <Property Name="idClient" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="75" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="idDocument" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Document" Relationship="Self.FK_Client_Document" FromRole="Client" ToRole="Document" />
+          <NavigationProperty Name="OrderTIcket" Relationship="Self.FK_OrderTIcket_Client" FromRole="Client" ToRole="OrderTIcket" />
+        </EntityType>
+        <EntityType Name="customs">
+          <Key>
+            <PropertyRef Name="idcustoms" />
+          </Key>
+          <Property Name="idcustoms" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Baggage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Weight" Type="Int32" Nullable="false" />
+          <Property Name="Cost" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="OrderTIcket" Relationship="Self.FK_OrderTIcket_customs" FromRole="customs" ToRole="OrderTIcket" />
+        </EntityType>
+        <EntityType Name="Document">
+          <Key>
+            <PropertyRef Name="idDocument" />
+          </Key>
+          <Property Name="idDocument" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeDocument" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NumberDocument" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateOfIssue" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Client" Relationship="Self.FK_Client_Document" FromRole="Document" ToRole="Client" />
+        </EntityType>
+        <EntityType Name="Flight">
+          <Key>
+            <PropertyRef Name="idFlight" />
+          </Key>
+          <Property Name="idFlight" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateFlight" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PointOfDeparture" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LandingPoint" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TimeFlight" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NumberFlight" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NumberPlane" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="FlightTicket" Relationship="Self.FK_FlightTicket_Flight" FromRole="Flight" ToRole="FlightTicket" />
+        </EntityType>
+        <EntityType Name="FlightTicket">
+          <Key>
+            <PropertyRef Name="idFlightTicket" />
+          </Key>
+          <Property Name="idFlightTicket" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idFlight" Type="Int32" Nullable="false" />
+          <Property Name="ifTicket" Type="Int32" Nullable="false" />
+          <Property Name="Allseats" Type="Int32" Nullable="false" />
+          <Property Name="ordered" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Flight" Relationship="Self.FK_FlightTicket_Flight" FromRole="FlightTicket" ToRole="Flight" />
+          <NavigationProperty Name="Ticket" Relationship="Self.FK_FlightTicket_Ticket" FromRole="FlightTicket" ToRole="Ticket" />
+          <NavigationProperty Name="OrderTIcket" Relationship="Self.FK_OrderTIcket_FlightTicket" FromRole="FlightTicket" ToRole="OrderTIcket" />
+        </EntityType>
+        <EntityType Name="OrderTIcket">
+          <Key>
+            <PropertyRef Name="idOrderTicket" />
+          </Key>
+          <Property Name="idOrderTicket" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idFlightTicket" Type="Int32" Nullable="false" />
+          <Property Name="idUserSystem" Type="Int32" Nullable="false" />
+          <Property Name="idClient" Type="Int32" Nullable="false" />
+          <Property Name="Dateorder" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NumberOrder" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StatusOrder" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="idcustomers" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Client" Relationship="Self.FK_OrderTIcket_Client" FromRole="OrderTIcket" ToRole="Client" />
+          <NavigationProperty Name="customs" Relationship="Self.FK_OrderTIcket_customs" FromRole="OrderTIcket" ToRole="customs" />
+          <NavigationProperty Name="FlightTicket" Relationship="Self.FK_OrderTIcket_FlightTicket" FromRole="OrderTIcket" ToRole="FlightTicket" />
+          <NavigationProperty Name="Usersystem" Relationship="Self.FK_OrderTIcket_Usersystem" FromRole="OrderTIcket" ToRole="Usersystem" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Ticket">
+          <Key>
+            <PropertyRef Name="idTicket" />
+          </Key>
+          <Property Name="idTicket" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NumberTicket" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PriceTicket" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClassTicket" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="FlightTicket" Relationship="Self.FK_FlightTicket_Ticket" FromRole="Ticket" ToRole="FlightTicket" />
+        </EntityType>
+        <EntityType Name="Usersystem">
+          <Key>
+            <PropertyRef Name="idUser" />
+          </Key>
+          <Property Name="idUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Firstname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Adress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserLogin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="OrderTIcket" Relationship="Self.FK_OrderTIcket_Usersystem" FromRole="Usersystem" ToRole="OrderTIcket" />
+        </EntityType>
+        <Association Name="FK_Client_Document">
+          <End Role="Document" Type="Self.Document" Multiplicity="1" />
+          <End Role="Client" Type="Self.Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Document">
+              <PropertyRef Name="idDocument" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="idDocument" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderTIcket_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="OrderTIcket" Type="Self.OrderTIcket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="idClient" />
+            </Principal>
+            <Dependent Role="OrderTIcket">
+              <PropertyRef Name="idClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderTIcket_customs">
+          <End Role="customs" Type="Self.customs" Multiplicity="1" />
+          <End Role="OrderTIcket" Type="Self.OrderTIcket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customs">
+              <PropertyRef Name="idcustoms" />
+            </Principal>
+            <Dependent Role="OrderTIcket">
+              <PropertyRef Name="idcustomers" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FlightTicket_Flight">
+          <End Role="Flight" Type="Self.Flight" Multiplicity="1" />
+          <End Role="FlightTicket" Type="Self.FlightTicket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Flight">
+              <PropertyRef Name="idFlight" />
+            </Principal>
+            <Dependent Role="FlightTicket">
+              <PropertyRef Name="idFlight" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FlightTicket_Ticket">
+          <End Role="Ticket" Type="Self.Ticket" Multiplicity="1" />
+          <End Role="FlightTicket" Type="Self.FlightTicket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ticket">
+              <PropertyRef Name="idTicket" />
+            </Principal>
+            <Dependent Role="FlightTicket">
+              <PropertyRef Name="ifTicket" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderTIcket_FlightTicket">
+          <End Role="FlightTicket" Type="Self.FlightTicket" Multiplicity="1" />
+          <End Role="OrderTIcket" Type="Self.OrderTIcket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FlightTicket">
+              <PropertyRef Name="idFlightTicket" />
+            </Principal>
+            <Dependent Role="OrderTIcket">
+              <PropertyRef Name="idFlightTicket" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderTIcket_Usersystem">
+          <End Role="Usersystem" Type="Self.Usersystem" Multiplicity="1" />
+          <End Role="OrderTIcket" Type="Self.OrderTIcket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usersystem">
+              <PropertyRef Name="idUser" />
+            </Principal>
+            <Dependent Role="OrderTIcket">
+              <PropertyRef Name="idUserSystem" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AirportSHIAEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Client" EntityType="Self.Client" />
+          <EntitySet Name="customs" EntityType="Self.customs" />
+          <EntitySet Name="Document" EntityType="Self.Document" />
+          <EntitySet Name="Flight" EntityType="Self.Flight" />
+          <EntitySet Name="FlightTicket" EntityType="Self.FlightTicket" />
+          <EntitySet Name="OrderTIcket" EntityType="Self.OrderTIcket" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Ticket" EntityType="Self.Ticket" />
+          <EntitySet Name="Usersystem" EntityType="Self.Usersystem" />
+          <AssociationSet Name="FK_Client_Document" Association="Self.FK_Client_Document">
+            <End Role="Document" EntitySet="Document" />
+            <End Role="Client" EntitySet="Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderTIcket_Client" Association="Self.FK_OrderTIcket_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="OrderTIcket" EntitySet="OrderTIcket" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderTIcket_customs" Association="Self.FK_OrderTIcket_customs">
+            <End Role="customs" EntitySet="customs" />
+            <End Role="OrderTIcket" EntitySet="OrderTIcket" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FlightTicket_Flight" Association="Self.FK_FlightTicket_Flight">
+            <End Role="Flight" EntitySet="Flight" />
+            <End Role="FlightTicket" EntitySet="FlightTicket" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FlightTicket_Ticket" Association="Self.FK_FlightTicket_Ticket">
+            <End Role="Ticket" EntitySet="Ticket" />
+            <End Role="FlightTicket" EntitySet="FlightTicket" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderTIcket_FlightTicket" Association="Self.FK_OrderTIcket_FlightTicket">
+            <End Role="FlightTicket" EntitySet="FlightTicket" />
+            <End Role="OrderTIcket" EntitySet="OrderTIcket" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderTIcket_Usersystem" Association="Self.FK_OrderTIcket_Usersystem">
+            <End Role="Usersystem" EntitySet="Usersystem" />
+            <End Role="OrderTIcket" EntitySet="OrderTIcket" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище AirportSHIAModelContainer" CdmEntityContainer="AirportSHIAEntities">
+          <EntitySetMapping Name="Client">
+            <EntityTypeMapping TypeName="AirportSHIAModel.Client">
+              <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="idClient" ColumnName="idClient" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="idDocument" ColumnName="idDocument" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="customs">
+            <EntityTypeMapping TypeName="AirportSHIAModel.customs">
+              <MappingFragment StoreEntitySet="customs">
+                <ScalarProperty Name="idcustoms" ColumnName="idcustoms" />
+                <ScalarProperty Name="Baggage" ColumnName="Baggage" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Document">
+            <EntityTypeMapping TypeName="AirportSHIAModel.Document">
+              <MappingFragment StoreEntitySet="Document">
+                <ScalarProperty Name="idDocument" ColumnName="idDocument" />
+                <ScalarProperty Name="TypeDocument" ColumnName="TypeDocument" />
+                <ScalarProperty Name="NumberDocument" ColumnName="NumberDocument" />
+                <ScalarProperty Name="DateOfIssue" ColumnName="DateOfIssue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Flight">
+            <EntityTypeMapping TypeName="AirportSHIAModel.Flight">
+              <MappingFragment StoreEntitySet="Flight">
+                <ScalarProperty Name="idFlight" ColumnName="idFlight" />
+                <ScalarProperty Name="DateFlight" ColumnName="DateFlight" />
+                <ScalarProperty Name="PointOfDeparture" ColumnName="PointOfDeparture" />
+                <ScalarProperty Name="LandingPoint" ColumnName="LandingPoint" />
+                <ScalarProperty Name="TimeFlight" ColumnName="TimeFlight" />
+                <ScalarProperty Name="NumberFlight" ColumnName="NumberFlight" />
+                <ScalarProperty Name="NumberPlane" ColumnName="NumberPlane" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FlightTicket">
+            <EntityTypeMapping TypeName="AirportSHIAModel.FlightTicket">
+              <MappingFragment StoreEntitySet="FlightTicket">
+                <ScalarProperty Name="idFlightTicket" ColumnName="idFlightTicket" />
+                <ScalarProperty Name="idFlight" ColumnName="idFlight" />
+                <ScalarProperty Name="ifTicket" ColumnName="ifTicket" />
+                <ScalarProperty Name="Allseats" ColumnName="Allseats" />
+                <ScalarProperty Name="ordered" ColumnName="ordered" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderTIcket">
+            <EntityTypeMapping TypeName="AirportSHIAModel.OrderTIcket">
+              <MappingFragment StoreEntitySet="OrderTIcket">
+                <ScalarProperty Name="idOrderTicket" ColumnName="idOrderTicket" />
+                <ScalarProperty Name="idFlightTicket" ColumnName="idFlightTicket" />
+                <ScalarProperty Name="idUserSystem" ColumnName="idUserSystem" />
+                <ScalarProperty Name="idClient" ColumnName="idClient" />
+                <ScalarProperty Name="Dateorder" ColumnName="Dateorder" />
+                <ScalarProperty Name="NumberOrder" ColumnName="NumberOrder" />
+                <ScalarProperty Name="StatusOrder" ColumnName="StatusOrder" />
+                <ScalarProperty Name="idcustomers" ColumnName="idcustomers" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="AirportSHIAModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ticket">
+            <EntityTypeMapping TypeName="AirportSHIAModel.Ticket">
+              <MappingFragment StoreEntitySet="Ticket">
+                <ScalarProperty Name="idTicket" ColumnName="idTicket" />
+                <ScalarProperty Name="NumberTicket" ColumnName="NumberTicket" />
+                <ScalarProperty Name="PriceTicket" ColumnName="PriceTicket" />
+                <ScalarProperty Name="ClassTicket" ColumnName="ClassTicket" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usersystem">
+            <EntityTypeMapping TypeName="AirportSHIAModel.Usersystem">
+              <MappingFragment StoreEntitySet="Usersystem">
+                <ScalarProperty Name="idUser" ColumnName="idUser" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Adress" ColumnName="Adress" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="UserLogin" ColumnName="UserLogin" />
+                <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

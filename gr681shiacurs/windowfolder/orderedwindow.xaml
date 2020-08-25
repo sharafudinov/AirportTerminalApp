@@ -1,0 +1,69 @@
+﻿<Window x:Class="gr681shiacurs.windowfolder.orderedwindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:gr681shiacurs.windowfolder"
+        mc:Ignorable="d"
+        Title="orderedwindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel x:Name="thisstack" Grid.Row="0" Grid.Column="0" Orientation="Horizontal">
+            <TextBlock Name="pointdeparted" Text="Точка отправления" Width="150" Height="50"/>
+            <TextBlock Name="land" Text="Точка прилета" Width="150" Height="50"/>
+            <TextBlock Name="date" Text="Дата отправления" Width="150" Height="50"/>
+            <TextBlock x:Name="class" Text="Класс билета" Width="150" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <Button Name="order" Content="Забронировать" Width=" 150" Height="50" Click="order_Click" />
+        </StackPanel>
+        <StackPanel x:Name="thisstack2" Grid.Row="1" Grid.Column="0" Orientation="Horizontal">
+            <ComboBox Name="combodepart" Width="150" Height="50">
+                <ComboBoxItem>Москва</ComboBoxItem>
+                <ComboBoxItem>Питер</ComboBoxItem>
+                <ComboBoxItem>Томск</ComboBoxItem>
+                <ComboBoxItem>Омск</ComboBoxItem>
+                <ComboBoxItem>Ад</ComboBoxItem>
+            </ComboBox>
+            <ComboBox Name="comboland" Width="150" Height="50">
+                <ComboBoxItem>Москва</ComboBoxItem>
+                <ComboBoxItem>Питер</ComboBoxItem>
+                <ComboBoxItem>Томск</ComboBoxItem>
+                <ComboBoxItem>Омск</ComboBoxItem>
+                <ComboBoxItem>Ад</ComboBoxItem>
+            </ComboBox>
+            <ComboBox Name="combodate" Width="150" Height="50">
+                <ComboBoxItem>21-01-1990</ComboBoxItem>
+                <ComboBoxItem>21-01-1231</ComboBoxItem>
+                <ComboBoxItem>21-01-1233</ComboBoxItem>
+            </ComboBox>
+            <ComboBox Name="comboclass" Width="150" Height="50">
+                <ComboBoxItem>test</ComboBoxItem>
+                <ComboBoxItem>высший</ComboBoxItem>
+                <ComboBoxItem>средний</ComboBoxItem>
+                <ComboBoxItem>лоу</ComboBoxItem>
+            </ComboBox>
+            <Button Name="search" Content="Поиск" Width=" 150" Height="50" Click="search_Click" />
+        </StackPanel>
+        <DataGrid x:Name="gridtable" AutoGenerateColumns="False" Grid.Column="0" Grid.Row="3"  SelectionChanged="gridtable_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Flight.DateFlight}" Header="Дата вылета"/>
+                <DataGridTextColumn Binding="{Binding Flight.TimeFlight}" Header="Время вылета"  />
+                <DataGridTextColumn Binding="{Binding Flight.PointOfDeparture}" Header="Точка отлета" />
+                <DataGridTextColumn Binding="{Binding Flight.LandingPoint}" Header="Точка прилета" />
+                <DataGridTextColumn Binding="{Binding Flight.NumberFlight}" Header="Номер самолета" />
+                <DataGridTextColumn Binding="{Binding Flight.NumberPlane}" Header="Тип самолета" />
+                <DataGridTextColumn Binding="{Binding Ticket.ClassTicket}" Header="Класс билета" />
+                <DataGridTextColumn Binding="{Binding Ticket.PriceTicket}" Header="Цена билета" />
+                <DataGridTextColumn Binding="{Binding Allseats}" Header="Количество мест" />
+                <DataGridTextColumn Binding="{Binding ordered}" Header="Забронированые места" />
+            </DataGrid.Columns>
+            
+        </DataGrid>
+    </Grid>
+</Window>

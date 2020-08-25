@@ -1,0 +1,45 @@
+﻿<Window x:Class="gr681shiacurs.windowfolder.ticketord"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:gr681shiacurs.windowfolder"
+        mc:Ignorable="d"
+        Title="ticketord" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Фамилия" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center"  VerticalAlignment="Center"/>
+        <TextBlock Text="Имя" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center"  VerticalAlignment="Center"/>
+        <TextBlock Text="Отчество" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Center"  VerticalAlignment="Center"/>
+        <TextBlock Text="Номер телефона" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Center"  VerticalAlignment="Center"/>
+        <TextBlock Text="Дата заказа" Grid.Column="0" Grid.Row="4" HorizontalAlignment="Center"  VerticalAlignment="Center"/>
+        <TextBlock Text="Номер заказа" Grid.Column="0" Grid.Row="5" HorizontalAlignment="Center"  VerticalAlignment="Center"/>
+        <TextBlock Text="Статус заказа" Grid.Column="0" Grid.Row="6" HorizontalAlignment="Center"  VerticalAlignment="Center"/>
+        <TextBox x:Name="lastname" Grid.Row="0" Grid.Column="1" />
+        <TextBox x:Name="firstname" Grid.Row="1" Grid.Column="1" />
+        <TextBox x:Name="middlename" Grid.Row="2" Grid.Column="1" />
+        <TextBox x:Name="phonenumber" Grid.Row="3" Grid.Column="1" />
+        <TextBox x:Name="orderday" Grid.Row="4" Grid.Column="1" />
+        <TextBox x:Name="numberorder" Grid.Row="5" Grid.Column="1" />
+        <ComboBox Name="status" Grid.Row="6" Grid.Column="1">
+            <ComboBoxItem>Заказан</ComboBoxItem>
+            <ComboBoxItem>Предоплата</ComboBoxItem>
+            <ComboBoxItem>Оплачен</ComboBoxItem>
+        </ComboBox>
+        <Button x:Name="close" Content="Отмена" Grid.Column="0" Grid.Row="7" Click="close_Click"/>
+        <Button x:Name="accept" Content="Заказать" Grid.Column="1" Grid.Row="7" Click="accept_Click"/>
+    </Grid>
+</Window>
